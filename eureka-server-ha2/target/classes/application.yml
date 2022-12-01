@@ -1,0 +1,33 @@
+server:
+  port: 8772
+
+# eureka 配置
+# eureka 一共有4部分 配置
+# 1. dashboard:eureka 的 web 控制台配置
+# 2. server:eureka 的服务端配置
+# 3. client:eureka 的客户端配置
+# 4. instance:eureka 的实例配置
+
+eureka:
+  instance:
+    hostname: eureka-server-ha2 # 主机名，需要在 hosts 文件里配置
+    lease-renewal-interval-in-seconds: 30 # 每一次eureka client 向 eureka server发送心跳的时间间隔
+    lease-expiration-duration-in-seconds: 90 # 如果90秒内eureka server没有收到eureka client的心跳包，则剔除该服务
+
+  client:
+    service-url:
+      defaultZone: http://eureka-server-ha1:8771/eureka # eureka服务端地址，将来客户端使用该地址和 eureka 进行通信
+    register-with-eureka: false # 是否将自己的路径注册到 eureka 上。eureka server 不需要的，eureka provider client 需要
+    fetch-registry: false # 是否需要从 eureka 中抓取路径。eureka server 不需要的，eureka consumer client 需要
+
+  server:
+    enable-self-preservation: true #是否开启自我保护机制，默认true，客户端未及时发送心跳包不立即删除客户端
+    eviction-interval-timer-in-ms: 120000 #清理间隔（单位毫秒，默认是60*1000），客户端超过 120s 未发送心跳包则删除客户端
+
+  dashboard:
+    enabled: true # eureka 图形化界面，默认开启
+    path: / # eureka 图形化界面访问路径，默认为 /，这里就是 localhost:8761/
+
+spring:
+  application:
+    name: eureka-server-ha # 给 eureka 集群服务设置相同的服务名
