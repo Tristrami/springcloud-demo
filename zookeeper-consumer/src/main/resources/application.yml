@@ -1,0 +1,9 @@
+server:
+  port: 8801
+
+spring:
+  application:
+    name: zookeeper-consumer
+  cloud:
+    zookeeper:
+      connect-string: 127.0.0.1:2181 # zookeeper server 地址

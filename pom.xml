@@ -6,12 +6,16 @@
     <modules>
         <module>eureka-provider</module>
         <module>eureka-consumer</module>
-        <module>eureka-common</module>
+        <module>web-common</module>
         <module>eureka-server</module>
         <module>eureka-server</module>
         <module>eureka-server</module>
         <module>eureka-server-ha1</module>
         <module>eureka-server-ha2</module>
+        <module>zookeeper-provider</module>
+        <module>zookeeper-consumer</module>
+        <module>consul-provider</module>
+        <module>consul-consumer</module>
     </modules>
 
     <parent>
@@ -29,7 +33,8 @@
         <java.version>8</java.version>
         <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
         <lombok.version>1.18.24</lombok.version>
-        <eureka-common.version>1.0-SNAPSHOT</eureka-common.version>
+        <web-common.version>1.0-SNAPSHOT</web-common.version>
+        <zookeeper.version>3.4.9</zookeeper.version>
     </properties>
 
     <dependencyManagement>
@@ -45,19 +50,28 @@
             </dependency>
 
             <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.seamew</groupId>
-                <artifactId>eureka-common</artifactId>
-                <version>${eureka-common.version}</version>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
             </dependency>
 
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.seamew</groupId>
+            <artifactId>web-common</artifactId>
+            <version>${web-common.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>
