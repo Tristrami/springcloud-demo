@@ -17,6 +17,11 @@ public class Result
     private Object data;
 
     /**
+     * 信息
+     */
+    private String message;
+
+    /**
      * 请求是否成功
      */
     private Boolean success;
@@ -26,22 +31,49 @@ public class Result
      */
     private ResponseStatus responseStatus;
 
-    public static Result success(Object data)
+    public static Result success(Object data, String message)
     {
         return Result.builder()
                 .success(true)
-                .responseStatus(ResponseStatus.SUCCESS)
                 .data(data)
+                .message(message)
+                .responseStatus(ResponseStatus.SUCCESS)
+                .build();
+    }
+
+    public static Result success(Object data)
+    {
+        return success(data, null);
+    }
+
+    public static Result success(String message)
+    {
+        return success(null, message);
+    }
+
+    public static Result success()
+    {
+        return success(null);
+    }
+
+    public static Result fail(Object data, String message)
+    {
+        return Result.builder()
+                .success(false)
+                .data(data)
+                .message(message)
+                .responseStatus(ResponseStatus.FAIL)
                 .build();
     }
 
     public static Result fail(Object data)
     {
-        return Result.builder()
-                .success(false)
-                .responseStatus(ResponseStatus.FAIL)
-                .data(data)
-                .build();
+        return fail(data, null);
+    }
+
+    public static Result fail(String message)
+    {
+        return fail(null, message);
     }
 
     public static Result fail()
