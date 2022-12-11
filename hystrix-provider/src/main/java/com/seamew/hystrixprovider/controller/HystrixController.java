@@ -3,28 +3,24 @@ package com.seamew.hystrixprovider.controller;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.seamew.result.Result;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("hystrix")
 public class HystrixController
 {
-    @GetMapping("status")
+    @GetMapping("providerStatus")
     public Result getProviderStatus()
     {
         return Result.success("Alive");
     }
 
-    @GetMapping("exception")
+    @GetMapping("providerException")
     @HystrixCommand(
-        fallbackMethod = "exceptionFallback", commandProperties = {
-            @HystrixProperty(
-                // 在服务提供方的角度设置的服务超时时间，如果服务的执行时间超过这个设定值，服务就会降级，执行 fallback
-                name ="execution.isolation.thread.timeoutInMilliseconds",
-                value = "3000"
-            )
+        fallbackMethod = "exceptionFallback",
+        commandProperties = {
+            // 在服务提供方的角度设置的服务超时时间，如果服务的执行时间超过这个设定值，服务就会降级，执行 fallback
+            @HystrixProperty(name ="execution.isolation.thread.timeoutInMilliseconds", value = "3000"),
         }
     )
     public Result exception()
@@ -35,15 +31,13 @@ public class HystrixController
     }
 
     @HystrixCommand(
-        fallbackMethod = "timeoutFallback", commandProperties = {
-            @HystrixProperty(
-                // 在服务提供方的角度设置的服务超时时间，如果服务的执行时间超过这个设定值，服务就会降级，执行 fallback
-                name ="execution.isolation.thread.timeoutInMilliseconds",
-                value = "3000"
-            )
+        fallbackMethod = "timeoutFallback",
+        commandProperties = {
+            // 在服务提供方的角度设置的服务超时时间，如果服务的执行时间超过这个设定值，服务就会降级，执行 fallback
+            @HystrixProperty(name ="execution.isolation.thread.timeoutInMilliseconds", value = "3000")
         }
     )
-    @GetMapping("timeout")
+    @GetMapping("providerTimeout")
     public Result timeout() throws InterruptedException
     {
         // 超时，触发超时 fallback
@@ -51,13 +45,43 @@ public class HystrixController
         return Result.success("timeout");
     }
 
+    @PostMapping("providerFuse")
+    @HystrixCommand(
+        fallbackMethod = "fuseFallback",
+        commandProperties = {
+            // 在服务提供方的角度设置的服务超时时间，如果服务的执行时间超过这个设定值，服务就会降级，执行 fallback
+            @HystrixProperty(name ="execution.isolation.thread.timeoutInMilliseconds", value = "3000"),
+            // 监控时间 默认5000 毫秒
+            @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value = "5000"),
+            // 失败次数。默认20次
+            @HystrixProperty(name="circuitBreaker.requestVolumeThreshold", value = "10"),
+            // 失败率 默认50%
+            @HystrixProperty(name="circuitBreaker.errorThresholdPercentage", value = "50")
+        }
+    )
+    public Result fuse(@RequestParam Boolean shouldThrowException)
+    {
+        if (shouldThrowException != null && shouldThrowException) {
+            // 如果请求中的 shouldThrowException 为 true 就抛出异常，执行 fallback，失败次数
+            // 多了以后会触发 hystrix 的熔断机制，其他请求访问这个接口都会降级执行 fallback
+            throw new RuntimeException();
+        } else {
+            return Result.success("No need to fuse");
+        }
+    }
+
     public Result exceptionFallback()
     {
-        return Result.fail("exceptionFallback");
+        return Result.fail("Provider fallback: exceptionFallback");
     }
 
     public Result timeoutFallback()
     {
-        return Result.fail("timeoutFallback");
+        return Result.fail("Provider fallback: timeoutFallback");
+    }
+
+    public Result fuseFallback(Boolean shouldThrowException)
+    {
+        return Result.fail("Provider fallback: fuseFallback");
     }
 }

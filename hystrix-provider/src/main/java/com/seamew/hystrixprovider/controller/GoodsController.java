@@ -21,11 +21,8 @@ public class GoodsController
     @GetMapping("{goodsId}")
     @HystrixCommand(
         fallbackMethod = "getGoodsByIdFallback", commandProperties = {
-            @HystrixProperty(
-                // 在服务提供方的角度设置的服务超时时间，如果服务的执行时间超过这个设定值，服务就会降级，执行 fallback
-                name ="execution.isolation.thread.timeoutInMilliseconds",
-                value = "3000"
-            )
+            // 在服务提供方的角度设置的服务超时时间，如果服务的执行时间超过这个设定值，服务就会降级，执行 fallback
+            @HystrixProperty(name ="execution.isolation.thread.timeoutInMilliseconds", value = "3000"),
         }
     )
     public Result getGoodsById(@PathVariable Integer goodsId)
