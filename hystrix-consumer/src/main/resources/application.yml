@@ -1,9 +1,9 @@
 server:
-  port: 9800
+  port: 9910
 
 spring:
   application:
-    name: feign-consumer
+    name: hystrix-consumer
 
 eureka:
   instance:
@@ -16,13 +16,20 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-# 设置 ribbon 超时时间
 ribbon:
+  # 设置 ribbon 超时时间
   # 连接超时时间，指的是 ribbon 进行远程调用时连接远程服务的超时时间
   ConnectTimeout: 1000
   # 读数据（逻辑运算）超时时间，指的是连接上远程服务后，从远程服务获取数据的超时时间
-  ReadTimeout: 3000
+  # 这里为了测试 hystrix 的超时 fallback，服务消费者端 ribbon 调用服务的超时时间
+  # 设置的长一点，不然会触发 ribbon 的超时操作
+  ReadTimeout: 6000
 
 logging:
   level:
     com.seamew: DEBUG
+
+# feign 集成了 hystrix，设置开启 hystrix
+feign:
+  hystrix:
+    enabled: true

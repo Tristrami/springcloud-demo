@@ -18,5 +18,5 @@ eureka:
     service-url:
       # eureka服务端地址，将来客户端使用该地址和eureka进行通信
       defaultZone: http://localhost:8761/eureka # eureka 服务端地址，将来客户端使用该地址和 eureka 进行通信
-      register-with-eureka: false # 是否将自己的路径注册到 eureka 上，默认为 true。
-      fetch-registry: false # 是否需要从 eureka 中抓取数据，默认为 true。
+      register-with-eureka: true # 是否将自己的路径注册到 eureka 上，默认为 true。
+      fetch-registry: true # 是否需要从 eureka 中抓取数据，默认为 true。

@@ -1,6 +1,6 @@
-package com.seamew.feignconsumer.feign;
+package com.seamew.hystrixconsumer.feign;
 
-import com.seamew.feignconsumer.config.FeignLoggingConfig;
+import com.seamew.hystrixconsumer.config.FeignLoggingConfig;
 import com.seamew.result.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
