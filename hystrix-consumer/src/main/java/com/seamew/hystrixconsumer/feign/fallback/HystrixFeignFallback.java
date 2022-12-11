@@ -8,14 +8,26 @@ import org.springframework.stereotype.Component;
 public class HystrixFeignFallback implements HystrixFeign
 {
     @Override
-    public Result providerException()
+    public Result getProviderStatus()
     {
-        return Result.fail("Consumer fallback: fail");
+        return Result.fail("Consumer fallback: getProviderStatus");
     }
 
     @Override
-    public Result getProviderStatus()
+    public Result providerException()
     {
-        return Result.fail("down", "Consumer fallback: provider connect fail fallback");
+        return Result.fail("Consumer fallback: providerException");
+    }
+
+    @Override
+    public Result providerTimeout()
+    {
+        return Result.fail("Consumer fallback: providerTimeout");
+    }
+
+    @Override
+    public Result providerFuse(Boolean shouldThrowException)
+    {
+        return Result.fail("Consumer fallback: providerFuse");
     }
 }
