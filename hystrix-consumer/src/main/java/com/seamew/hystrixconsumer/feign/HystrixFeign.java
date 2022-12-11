@@ -26,7 +26,7 @@ public interface HystrixFeign
     @GetMapping("/hystrix/providerTimeout")
     Result providerTimeout();
 
-    // 如果请求有参数要使用 @RequestParam 绑定参数
+    // 如果请求中有参数要使用 @RequestParam 绑定参数
     @PostMapping("/hystrix/providerFuse")
     Result providerFuse(@RequestParam Boolean shouldThrowException);
 }
