@@ -22,6 +22,7 @@
         <module>hystrix-provider</module>
         <module>hystrix-consumer</module>
         <module>hystrix-monitor</module>
+        <module>api-gateway-server</module>
     </modules>
 
     <parent>

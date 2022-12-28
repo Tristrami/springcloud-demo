@@ -1,0 +1,17 @@
+POST http://localhost:7000/order
+Content-Type: application/x-www-form-urlencoded
+
+goodsId=1
+
+<> 2022-12-28T164733.200.json
+<> 2022-12-28T164121.200.json
+<> 2022-12-28T155038.200.json
+<> 2022-12-28T154940.200.json
+<> 2022-12-28T154626.500.json
+<> 2022-12-28T154407.400.json
+
+###
+GET http://localhost:7000/goods/1
+Content-Type: application/x-www-form-urlencoded
+
+<> 2022-12-28T155259.200.json
