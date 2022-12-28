@@ -1,0 +1,4 @@
+GET localhost:7020/config/message
+
+###
+POST localhost:7020/actuator/refresh

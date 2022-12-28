@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:7010
+      name: config-client
+      profile: dev
+      label: main
+      # 从注册中心找 config-server
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
