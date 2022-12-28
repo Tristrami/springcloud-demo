@@ -21,6 +21,7 @@
         <module>feign-consumer</module>
         <module>hystrix-provider</module>
         <module>hystrix-consumer</module>
+        <module>hystrix-monitor</module>
     </modules>
 
     <parent>

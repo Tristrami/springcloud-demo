@@ -54,7 +54,7 @@ public class HystrixController
             // 监控时间 默认5000 毫秒
             @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value = "5000"),
             // 失败次数。默认20次
-            @HystrixProperty(name="circuitBreaker.requestVolumeThreshold", value = "10"),
+            @HystrixProperty(name="circuitBreaker.requestVolumeThreshold", value = "5"),
             // 失败率 默认50%
             @HystrixProperty(name="circuitBreaker.errorThresholdPercentage", value = "50")
         }

@@ -2,10 +2,12 @@ package com.seamew.hystrixconsumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients(basePackages = "com.seamew")
+@EnableHystrixDashboard
 public class HystrixConsumerApplication
 {
     // 服务降级: 服务降级一般是指在服务器压力剧增的时候，根据实际业务使用情况以及流量，对一些服务
