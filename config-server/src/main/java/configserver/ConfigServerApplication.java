@@ -8,10 +8,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 @EnableConfigServer
 @EnableEurekaClient
-public class ConfigServerApplication
-{
-    public static void main(String[] args)
-    {
+public class ConfigServerApplication {
+
+    public static void main(String[] args) {
         // config-server 将从我们配置的 git 远程仓库中获取配置文件，支持用以下几种形式的 url 获取配置文件
         // localhost:8888/foo/development
         // localhost:8888/foo/development/master

@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("timeout")
-public class TimeoutController
-{
+public class TimeoutController {
+
     @GetMapping("/readTimeout")
-    public Result readTimeout() throws InterruptedException
-    {
+    public Result readTimeout() throws InterruptedException {
         Thread.sleep(5000);
         return Result.success();
     }

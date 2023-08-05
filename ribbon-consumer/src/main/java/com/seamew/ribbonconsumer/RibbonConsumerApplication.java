@@ -11,10 +11,9 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 // 声明式的配置 ribbon 客户端，在这里可以配置负载均衡算法，name 代表服务名，configuration 代表配置类，
 // 也就是配置调用某个服务时使用某一个配置
 @RibbonClient(name = "ribbon-provider", configuration = RibbonConfig.class)
-public class RibbonConsumerApplication
-{
-    public static void main(String[] args)
-    {
+public class RibbonConsumerApplication {
+
+    public static void main(String[] args) {
         // * 这里使用 eureka 作为服务注册中心，使用具有负载均衡功能的 RestTemplate 调用
         //   ribbon-provider 服务，ribbon-provider 将会在不同的端口上启动多个实例，我
         //   们不断的发送请求就可以测试 ribbon 的客户端负载均衡功能

@@ -1,7 +1,6 @@
 package com.seamew.result;
 
-public enum ResponseStatus
-{
+public enum ResponseStatus {
     /**
      * 成功
      */
@@ -22,19 +21,16 @@ public enum ResponseStatus
      */
     private String message;
 
-    ResponseStatus(int code, String message)
-    {
+    ResponseStatus(int code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public int getCode()
-    {
+    public int getCode() {
         return code;
     }
 
-    public String getMessage()
-    {
+    public String getMessage() {
         return message;
     }
 }

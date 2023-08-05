@@ -13,28 +13,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("goods")
-public class GoodsController
-{
+public class GoodsController {
+
     @Autowired
     private GoodsService goodsService;
 
     @GetMapping("{goodsId}")
     @HystrixCommand(
-        fallbackMethod = "getGoodsByIdFallback", commandProperties = {
+            fallbackMethod = "getGoodsByIdFallback", commandProperties = {
             // 在服务提供方的角度设置的服务超时时间，如果服务的执行时间超过这个设定值，服务就会降级，执行 fallback
-            @HystrixProperty(name ="execution.isolation.thread.timeoutInMilliseconds", value = "3000"),
-        }
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000"),
+    }
     )
-    public Result getGoodsById(@PathVariable Integer goodsId)
-    {
+    public Result getGoodsById(@PathVariable Integer goodsId) {
         Goods goods = goodsService.getGoodsById(goodsId);
         return Result.success(goods);
     }
 
 
     // fallback 函数的参数及返回值类型要和原函数一致
-    public Result getGoodsByIdFallback(Integer Id)
-    {
+    public Result getGoodsByIdFallback(Integer Id) {
         return Result.fail();
     }
 }

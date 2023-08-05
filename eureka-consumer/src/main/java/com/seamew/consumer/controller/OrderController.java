@@ -14,8 +14,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("order")
-public class OrderController
-{
+public class OrderController {
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -23,8 +23,7 @@ public class OrderController
     private DiscoveryClient discoveryClient;
 
     @PostMapping
-    public Result addOrder(@RequestParam("goodsId") Long goodsId)
-    {
+    public Result addOrder(@RequestParam("goodsId") Long goodsId) {
         List<ServiceInstance> instances = discoveryClient.getInstances("eureka-provider");
         ServiceInstance serviceInstance = instances.get(0);
         String url = serviceInstance.getScheme()

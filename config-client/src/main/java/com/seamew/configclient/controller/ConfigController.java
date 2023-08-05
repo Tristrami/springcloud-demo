@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 @RestController
 @RequestMapping("config")
-public class ConfigController
-{
+public class ConfigController {
+
     @Value("${message}")
     private String message;
 
     @GetMapping("message")
-    public Result getMessage()
-    {
+    public Result getMessage() {
         return Result.success(message);
     }
 }

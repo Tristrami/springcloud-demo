@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Result
-{
+public class Result {
+
     /**
      * 返回的数据
      */
@@ -31,8 +31,7 @@ public class Result
      */
     private ResponseStatus responseStatus;
 
-    public static Result success(Object data, String message)
-    {
+    public static Result success(Object data, String message) {
         return Result.builder()
                 .success(true)
                 .data(data)
@@ -41,23 +40,19 @@ public class Result
                 .build();
     }
 
-    public static Result success(Object data)
-    {
+    public static Result success(Object data) {
         return success(data, null);
     }
 
-    public static Result success(String message)
-    {
+    public static Result success(String message) {
         return success(null, message);
     }
 
-    public static Result success()
-    {
+    public static Result success() {
         return success(null);
     }
 
-    public static Result fail(Object data, String message)
-    {
+    public static Result fail(Object data, String message) {
         return Result.builder()
                 .success(false)
                 .data(data)
@@ -66,18 +61,15 @@ public class Result
                 .build();
     }
 
-    public static Result fail(Object data)
-    {
+    public static Result fail(Object data) {
         return fail(data, null);
     }
 
-    public static Result fail(String message)
-    {
+    public static Result fail(String message) {
         return fail(null, message);
     }
 
-    public static Result fail()
-    {
+    public static Result fail() {
         return fail(null);
     }
 }

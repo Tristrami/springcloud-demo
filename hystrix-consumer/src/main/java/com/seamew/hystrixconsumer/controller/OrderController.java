@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("order")
-public class OrderController
-{
+public class OrderController {
+
     @Autowired
     private GoodsFeign goodsFeign;
 
     @PostMapping
-    public Result addOrder(@RequestParam("goodsId") Long goodsId)
-    {
+    public Result addOrder(@RequestParam("goodsId") Long goodsId) {
         return goodsFeign.getGoodsById(goodsId);
     }
 }

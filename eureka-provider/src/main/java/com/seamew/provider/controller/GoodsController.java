@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("goods")
-public class GoodsController
-{
+public class GoodsController {
+
     @Autowired
     private GoodsService goodsService;
 
     @GetMapping("{goodsId}")
-    public Result getGoodsById(@PathVariable Integer goodsId)
-    {
+    public Result getGoodsById(@PathVariable Integer goodsId) {
         Goods goods = goodsService.getGoodsById(goodsId);
         return Result.success(goods);
     }

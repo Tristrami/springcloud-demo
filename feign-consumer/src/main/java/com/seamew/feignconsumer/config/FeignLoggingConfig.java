@@ -5,11 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class FeignLoggingConfig
-{
+public class FeignLoggingConfig {
+
     @Bean
-    public Logger.Level level()
-    {
+    public Logger.Level level() {
         // NONE: No logging
         // BASIC: Log only the request method and URL and the response status code and execution time
         // HEADERS: Log the basic information along with request and response headers

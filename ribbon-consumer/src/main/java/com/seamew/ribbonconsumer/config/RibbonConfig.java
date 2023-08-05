@@ -6,12 +6,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RibbonConfig
-{
+public class RibbonConfig {
+
     // 使用随机算法
     @Bean
-    public IRule rule()
-    {
+    public IRule rule() {
         return new RandomRule();
     }
 }

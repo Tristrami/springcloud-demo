@@ -8,10 +8,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 // 例如获取一个服务，在启动类上使用这个注解后 spring 会将这个程序作为服务注册到注册中心中
 @EnableDiscoveryClient
 @SpringBootApplication
-public class ZookeeperProviderApplication
-{
-    public static void main(String[] args)
-    {
+public class ZookeeperProviderApplication {
+
+    public static void main(String[] args) {
         SpringApplication.run(ZookeeperProviderApplication.class, args);
     }
 }

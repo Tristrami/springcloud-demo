@@ -9,15 +9,15 @@ spring:
     gateway:
       routes: # 路由配置
 
-      # 路由配置格式:
-      # * id:
-      #   唯一标识，默认是一个UUID
-      # * uri:
-      #   转发路径
-      # * predicates:
-      #   规定匹配该 route 的请求需要满足的一系列条件，其实就是针对请求的各个属性，如请求时间、请求路径、请求方法等等
-      #   定义了许多可供我们使用的 predicate，只有当所有的 predicate 都为 true 时，才能匹配到这个 route
-      # * filters: 配置局部过滤器
+        # 路由配置格式:
+        # * id:
+        #   唯一标识，默认是一个UUID
+        # * uri:
+        #   转发路径
+        # * predicates:
+        #   规定匹配该 route 的请求需要满足的一系列条件，其实就是针对请求的各个属性，如请求时间、请求路径、请求方法等等
+        #   定义了许多可供我们使用的 predicate，只有当所有的 predicate 都为 true 时，才能匹配到这个 route
+        # * filters: 配置局部过滤器
 
         # 为 hystrix-provider 配置路由
         - id: hystrix-provider

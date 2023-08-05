@@ -8,8 +8,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableFeignClients(basePackages = "com.seamew")
 @EnableHystrixDashboard
-public class HystrixConsumerApplication
-{
+public class HystrixConsumerApplication {
+
     // 服务降级: 服务降级一般是指在服务器压力剧增的时候，根据实际业务使用情况以及流量，对一些服务
     // 和页面有策略的不处理或者用一种简单的方式进行处理，从而释放服务器资源的资源以保证核心业务的
     // 正常高效运行。这里就是模拟服务出现异常或者超时，用一种简单的方式进行处理
@@ -39,8 +39,7 @@ public class HystrixConsumerApplication
     //   者空气开关，也就是说，其他线程来调用这个相同的接口时，都会失败，触发服务降级，开关处于关闭状态。
     //   一段时间后开关变为半开状态，可以开始接受请求，当请求成功次数超过一定阈值时，开关恢复为开启状态
     // 注意: 熔断的对象是某个接口，接口被熔断后会一直处于服务降级状态
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         SpringApplication.run(HystrixConsumerApplication.class, args);
     }
 }

@@ -6,10 +6,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients // 扫描带有 @FeignClient 的接口创建实现类并将其注入到容器中
-public class FeignConsumerApplication
-{
-    public static void main(String[] args)
-    {
+public class FeignConsumerApplication {
+
+    public static void main(String[] args) {
         // * 这里使用 ribbon-provider 作为服务提供者，测试 feign 远程调用，有了 feign 之后
         //   我们不需要再关心远程调用的具体逻辑，只需要在本地创建接口，通过注解的方式指明要调用
         //   的服务名称和路径，再调用接口的方法即可完成远程调用，换句话说，feign 可以让我们的远

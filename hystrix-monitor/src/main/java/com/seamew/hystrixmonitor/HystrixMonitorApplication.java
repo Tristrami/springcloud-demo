@@ -8,11 +8,9 @@ import org.springframework.cloud.netflix.turbine.EnableTurbine;
 @SpringBootApplication
 @EnableHystrixDashboard
 @EnableTurbine
-public class HystrixMonitorApplication
-{
+public class HystrixMonitorApplication {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // hystrix 监控台搭建步骤:
         // * 配置 monitor 服务:
         //   1. 创建 hystrix-monitor 模块，引入 springboot 相关依赖，并将服务注册到 eureka

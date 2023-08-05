@@ -6,10 +6,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class ApiGatewayServerApplication
-{
-    public static void main(String[] args)
-    {
+public class ApiGatewayServerApplication {
+
+    public static void main(String[] args) {
         // 网关旨在为微服务架构提供一种简单而有效的统一的 API 路由管理方式，系统中一些与业务无关的公共逻辑可以放在网关服务中，
         // 如认证、鉴权、监控、缓存、负载均衡、流量管控、路由转发等，其主要有以下两个作用:
         // 1. 路由: 网关服务将作为系统的入口，将客户端的请求根据配置的路由映射把请求转发到对应的微服务上，再将结果返回给客户端

@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("timeout")
-public class TimeoutController
-{
+public class TimeoutController {
+
     @Autowired
     private TimeoutFeign timeoutFeign;
 
     @GetMapping("/readTimeout")
-    public Result readTimeout() throws InterruptedException
-    {
+    public Result readTimeout() throws InterruptedException {
         return timeoutFeign.readTimeout();
     }
 }

@@ -1,7 +1,7 @@
 POST http://localhost:7000/order
 Content-Type: application/x-www-form-urlencoded
 
-goodsId=1
+goodsId = 1
 
 <> 2022-12-28T164733.200.json
 <> 2022-12-28T164121.200.json

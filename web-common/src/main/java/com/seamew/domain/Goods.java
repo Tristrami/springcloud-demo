@@ -10,8 +10,8 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Goods implements Serializable
-{
+public class Goods implements Serializable {
+
     /**
      * 商品 id
      */
